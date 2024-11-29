@@ -7,14 +7,14 @@ class DepartmentsController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
-    @departments = Department.where({:id => the_id })
+    @department = Department.where({:id => the_id })
 
     render({ :template => "departments/show" })
   end
 
   def create
-    @departments = Department.new
-    department.name = params.fetch("query_name")
+    @department = Department.new
+    @department.name = params.fetch("query_name")
 
     if @department.valid?
       @department.save
@@ -28,7 +28,7 @@ class DepartmentsController < ApplicationController
     the_id = params.fetch("path_id")
     @department = Department.where({ :id => the_id }).at(0)
 
-    department.name = params.fetch("query_name")
+    @department.name = params.fetch("query_name")
 
     if @department.valid?
       @department.save
