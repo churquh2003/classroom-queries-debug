@@ -7,19 +7,19 @@ class StudentsController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
-    @students = Student.where({:id => the_id }).at(0)
+    @student = Student.where({:id => the_id }).at(0)
 
     render({ :template => "students/show" })
   end
 
   def create
-    @students = Student.new
-    @students.first_name = params.fetch("query_first_name")
-    @students.last_name = params.fetch("query_last_name")
-    @students.email = params.fetch("query_email")
+    @student = Student.new
+    @student.first_name = params.fetch("query_first_name")
+    @student.last_name = params.fetch("query_last_name")
+    @student.email = params.fetch("query_email")
 
-    if @students.valid?
-      @students.save
+    if @student.valid?
+      @student.save
       redirect_to("/students", { :notice => "Student created successfully." })
     else
       redirect_to("/students", { :notice => "Student failed to create successfully." })
@@ -28,25 +28,25 @@ class StudentsController < ApplicationController
 
   def update
     the_id = params.fetch("path_id")
-    @students = Student.where({ :id => the_id }).at(0)
+    @student = Student.where({ :id => the_id }).at(0)
 
-    @students.first_name = params.fetch("query_first_name")
-    @students.last_name = params.fetch("query_last_name")
-    @students.email = params.fetch("query_email")
+    @student.first_name = params.fetch("query_first_name")
+    @student.last_name = params.fetch("query_last_name")
+    @student.email = params.fetch("query_email")
 
-    if @students.valid?
-      @students.save
-      redirect_to("/students/#{@students.id}", { :notice => "Student updated successfully."} )
+    if @student.valid?
+      @student.save
+      redirect_to("/students/#{@student.id}", { :notice => "Student updated successfully."} )
     else
-      redirect_to("/students/#{@students.id}", { :alert => "Student failed to update successfully." })
+      redirect_to("/students/#{@student.id}", { :alert => "Student failed to update successfully." })
     end
   end
 
   def destroy
     the_id = params.fetch("path_id")
-    @students = Student.where({ :id => the_id }).at(0)
+    @student = Student.where({ :id => the_id }).at(0)
 
-    @students.destroy
+    @student.destroy
 
     redirect_to("/students", { :notice => "Student deleted successfully."} )
   end
