@@ -9,5 +9,4 @@
 #  student_id :integer
 #
 class Enrollment < ApplicationRecord
-  has_many :students, dependent: :destroy
 end
