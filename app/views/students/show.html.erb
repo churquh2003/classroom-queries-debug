@@ -100,15 +100,11 @@
 
 <hr>
 
+<h4>Enrolled Courses</h4>
 <ul>
-  <% a_id = @student_id %>
-    <% enrollments = Enrollment.where({:student_id => a_id }) %>
-    <% enrollments.each do |enrollment| %>
-      <% course = Course.where({ :id => enrollment.course_id }).at(0) %>
+  <% @student.courses.each do |course| %>
     <li>
-      <a href="/courses/<%= course.id %>">
-        <%= course.title %>
-      </a>
+      <a href="/courses/<%= course.id %>"><%= course.title %></a>
     </li>
   <% end %>
 </ul>
