@@ -32,9 +32,9 @@ class DepartmentsController < ApplicationController
 
     if @department.valid?
       @department.save
-      redirect_to("/departments/#{department.id}", { :notice => "Department updated successfully."} )
+      redirect_to("/departments/#{@department.id}", { :notice => "Department updated successfully."} )
     else
-      redirect_to("/departments/#{department.id}", { :alert => "Department failed to update successfully." })
+      redirect_to("/departments/#{@department.id}", { :alert => "Department failed to update successfully." })
     end
   end
 
