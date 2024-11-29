@@ -72,7 +72,7 @@
     Term offered
   </dt>
   <dd>
-    <%= course.term_offered %>
+    <%= @course.term_offered %>
   </dd>
 
   <dt>
@@ -88,7 +88,7 @@
   </dt>
   <dd>
     <%= Enrollment.where({ :course_id => @course.id }).count %>
-    
+
   </dd>
 </dl>
 
